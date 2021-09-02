@@ -11,10 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run on arm64e
-        shell: "/usr/bin/arch -arch arm64 /bin/bash {0}"
-        run: uname -a
-        
-      - name: Run on x86_64
-        shell: "/usr/bin/arch -arch x86_64 /bin/bash {0}"
+      - name: Get uname
         run: uname -a

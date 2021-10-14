@@ -37,5 +37,5 @@ jobs:
         run: ls -n /Applications/ | grep Xcode
       
       - name: Run get simulation list
-        run: xcrun xctrace list devices
+        run: xcrun xctrace list devices || instruments -s devices
 # 2>&1 | grep \'^iPhone\

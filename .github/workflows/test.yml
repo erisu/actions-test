@@ -36,7 +36,7 @@ jobs:
       - name: Run prepare iOS simulator
       
         run: |
-          SIM_RUNTIME_VERSION=${${{ matrix.versions.ios-version }}//./-}
+          SIM_RUNTIME_VERSION=$(${{ matrix.versions.ios-version }}//./-)
           sudo mkdir -p /Library/Developer/CoreSimulator/Profiles/Runtimes
           sudo ln -s /Applications/Xcode_${{ matrix.versions.xcode-version }}.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ ${{ matrix.versions.ios-version }}.simruntime
           xcrun simctl list runtimes

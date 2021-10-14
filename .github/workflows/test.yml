@@ -38,9 +38,10 @@ jobs:
         run: |
           sudo mkdir -p /Library/Developer/CoreSimulator/Profiles/Runtimes
           sudo ln -s /Applications/Xcode_${{ matrix.versions.xcode-version }}.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ ${{ matrix.versions.ios-version }}.simruntime
-# xcrun simctl list runtimes
+          xcrun simctl list runtimes
 # xcrun simctl create custom-test-device "iPad Pro (9.7-inch)" "com.apple.CoreSimulator.SimRuntime.iOS-12-4"
 # xcrun simctl list devices 12.4
 
       - name: Run get simulation list
-        run: xcrun xctrace list devices 2>&1 | grep \'^iPhone\
+        run: xcrun xctrace list devices
+# 2>&1 | grep \'^iPhone\

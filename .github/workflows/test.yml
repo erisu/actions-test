@@ -7,18 +7,25 @@ on:
 jobs:
   build:
     name: iOS ${{ matrix.versions.ios-range }} Test
-    runs-on: macos-latest
+    runs-on: ${{ matrix.versions.os }}
     
     strategy:
       matrix:
         versions:
-          - ios-config: 13.x
+          - os: macos-10.5
+            ios-config: 12.x
+            xcode-version: 10.x
+
+          - os: macos-11
+            ios-config: 13.x
             xcode-version: 11.x
             
-          - ios-config: 14.x
+          - os: macos-11
+            ios-config: 14.x
             xcode-version: 12.x
             
-          - ios-config: 15.x
+          - os: macos-11
+            ios-config: 15.x
             xcode-version: 13.x
 
     steps:

@@ -12,9 +12,6 @@ jobs:
     strategy:
       matrix:
         versions:
-          - ios-config: 12.x
-            xcode-version: 10.x
-            
           - ios-config: 13.x
             xcode-version: 11.x
             

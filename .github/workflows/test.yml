@@ -12,17 +12,17 @@ jobs:
     strategy:
       matrix:
         versions:
-          - ios-config: 12.x
+          - ios-config: 12
             ios-version: 12.4
             simruntime-version: 12-4
             xcode-version: 10.3
             
-          - ios-config: 13.x
+          - ios-config: 13
             ios-version: 13.7
             simruntime-version: 13-7
             xcode-version: 11.7
             
-          - ios-config: 14.x
+          - ios-config: 14
             ios-version: 14.4
             simruntime-version: 14-4
             xcode-version: 12.4
@@ -42,7 +42,7 @@ jobs:
           sudo mkdir -p /Library/Developer/CoreSimulator/Profiles/Runtimes
           sudo ln -s /Applications/Xcode_${{ matrix.versions.xcode-version }}.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ ${{ matrix.versions.ios-version }}.simruntime
           xcrun simctl list runtimes
-          xcrun simctl create custom-test-device "iPhone (Cordova Test)" "com.apple.CoreSimulator.SimRuntime.iOS-${{ matrix.versions.simruntime-version }}"
+          xcrun simctl create custom-test-device "iPhone ${{ matrix.versions.ios-config }} Pro (${{ matrix.versions.ios-version }})" "com.apple.CoreSimulator.SimRuntime.iOS-${{ matrix.versions.simruntime-version }}"
           xcrun simctl list devices
 
       - name: Run get simulation list

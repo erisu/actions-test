@@ -11,5 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Get uname
+      - name: Run get uname
         run: uname -a
+        
+      - name: Run get xcode list
+        run: ls -n /Applications/ | grep Xcode

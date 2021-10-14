@@ -6,13 +6,32 @@ on:
 
 jobs:
   build:
+    name: iOS ${{ matrix.versions.ios-range }} Test
     runs-on: macos-latest
+    
+    strategy:
+      matrix:
+        versions:
+          - ios-range: 12.x
+            ios-version: 12.4
+          - ios-range: 13.x
+            ios-version: 13.7
+          - ios-range: 14.x
+            ios-version: 14.4
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Run get uname
         run: uname -a
-        
+
       - name: Run get xcode list
         run: ls -n /Applications/ | grep Xcode
+
+      - name: Run prepare iOS simulator
+        run: |
+          sudo mkdir -p /Library/Developer/CoreSimulator/Profiles/Runtimes
+          sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS.simruntime /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ ${{ matrix.versions.ios-version }}.simruntime
+
+      - name: Run get simulation list
+        run: xcrun xctrace list devices 2>&1 | grep \'^iPhone\

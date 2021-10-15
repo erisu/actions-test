@@ -45,6 +45,6 @@ jobs:
       
       - name: Run get simulation list
         run: |
-        npm i
-        node deviceList.js
+          npm i
+          node deviceList.js
 # 2>&1 | grep \'^iPhone\

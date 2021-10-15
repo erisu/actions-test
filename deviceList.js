@@ -18,7 +18,7 @@ const cmdDeviceList = deviceListBin === 'instruments'
   ? 'instruments -s devices'
   : 'xcrun xctrace list devices';
 const cmd = `${cmdDeviceList} | grep '^iPhone'`;
-const results = exec(cmd).grep(/^iPhone/);
+const results = exec(cmd);
 
 console.log(results);
 

@@ -44,5 +44,7 @@ jobs:
         run: ls -n /Applications/ | grep Xcode
       
       - name: Run get simulation list
-        run: node deviceList.js
+        run: |
+        npm i
+        node deviceList.js
 # 2>&1 | grep \'^iPhone\

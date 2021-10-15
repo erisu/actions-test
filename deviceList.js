@@ -16,9 +16,9 @@ function exec (cmd, onFinish, onData) {
 const deviceListBin = 'xcrun';
 const cmdDeviceList = deviceListBin === 'instruments'
   ? 'instruments -s devices'
-  : 'xcrun xctrace list devices 2>&1';
+  : 'xcrun xctrace list devices';
 const cmd = `${cmdDeviceList} | grep '^iPhone'`;
-const results = exec(cmd);
+const results = exec(cmd).grep(/^iPhone/);
 
 console.log(results);
 

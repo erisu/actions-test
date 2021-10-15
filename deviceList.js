@@ -23,7 +23,7 @@ console.log(results);
 
 if (results.code > 0) {
   console.log('Failed to get the list of simulators');
-} else {Z
+} else {
   let simulatorCollection = results.grep(/^iPhone/).stdout.split('\n');
   console.log(simulatorCollection.filter(i => i));
 }
